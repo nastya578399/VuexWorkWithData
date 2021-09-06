@@ -12,6 +12,13 @@ export default createStore({
         },
         add(state, payload) {
             state.counter += payload.value
+        },
+    },
+    actions: {
+        incrementAsync({ commit }, payload) {
+            setTimeout(() => {
+                commit('add', payload)
+            }, payload.delay)
         }
     },
     getters: {
@@ -22,7 +29,7 @@ export default createStore({
             return state.counter
         },
         doubleCounter(_, getters) {
-            return getters.counter * getters.counter
+            return getters.counter * 2
         }
     }
 })
