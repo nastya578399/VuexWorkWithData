@@ -11,28 +11,17 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import {mapGetters, mapActions, mapMutations} from 'vuex'
 import TheNavbar from './TheNavbar.vue'
 
 export default {
     computed: {
-      ...mapGetters(['counter', 'doubleCounter', 'uppercaseTitle'])
+      ...mapGetters(['uppercaseTitle']),
+      ...mapGetters('count',['counter', 'doubleCounter'])
     },
     methods: {
-      add() {
-        // this.$store.commit('add', 1)
-        this.$store.commit({
-          type: 'add',
-          value: 1
-        })
-      },
-      ...mapActions(['incrementAsync']),
-      // incrementAsync() {
-      //   this.$store.dispatch('incrementAsync', {
-      //     value: 10,
-      //     delay: 200
-      //   })
-      // }
+    ...mapMutations({add: 'count/increment'}),
+    ...mapActions('count', ['incrementAsync'])
     },
   components: {TheNavbar}
 }
