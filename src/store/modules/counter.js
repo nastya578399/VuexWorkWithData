@@ -28,9 +28,9 @@ export default {
             return state.counter
         },
         doubleCounter(state, getters, rootState, rootGetters) {
-            console.log('state', state)
-            console.log('getters', getters)
-            console.log('rootGetters', rootGetters)
+            // console.log('state', state)
+            // console.log('getters', getters)
+            // console.log('rootGetters', rootGetters)
             return getters.counter * 2
         }
     }
